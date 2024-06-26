@@ -51,7 +51,7 @@ export default async function app(appDiv) {
         }
 
    }}})
-
+   renderNewUserForm(newUserFormEl)
    newUserFormEl.addEventListener('submit', async (event) => {
     event.preventDefault()
     if (event.target.tagName === 'BUTTON') {

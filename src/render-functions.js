@@ -59,6 +59,8 @@ export const renderNewUserForm = (newUserFormEl) => {
   isCoolLabel.textContent = "Is this user cool?"
   languageLabel.textContent = "Favorite Language"
 
+  usernameLabel.for = 'username'
+  
   usernameInput.id = 'username'
   usernameInput.name = 'username'
   isCoolInput.id = 'is-cool'
