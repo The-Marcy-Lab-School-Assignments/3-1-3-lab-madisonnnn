@@ -53,20 +53,11 @@ export default async function app(appDiv) {
    }}})
    renderNewUserForm(newUserFormEl)
    newUserFormEl.addEventListener('submit', async (event) => {
-    event.preventDefault()
-    if (event.target.tagName === 'BUTTON') {
-      console.log(event)
-      const newUser = event.target.dataset;
-  
-      console.log("this is newUser", newUser);
-      if (newUser) {
-        // Fetch author data
-        const userData = await renderNewUser(newUser);
-        console.log("this is user data: ", userData)
-        // Render author data
-        if (userData) {
-         await renderNewUserForm(renderNewUser, userData);
-        }
-
-   }}})
+    event.preventDefault();
+      const userData = new FormData(event.target)
+      const formObj = Object.fromEntries(userData)
+      const user = await createNewUser(formObj)
+      renderNewUser(newUserEl,user)
+        // console.log("this is user data: ", userData)
+   })
 }

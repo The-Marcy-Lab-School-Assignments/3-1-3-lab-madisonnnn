@@ -47,41 +47,19 @@ console.log(img.src)
 }
 
 export const renderNewUserForm = (newUserFormEl) => {
-  const usernameLabel = document.createElement('label')
-  const isCoolLabel = document.createElement('label')
-  const languageLabel = document.createElement('label')
-  const usernameInput = document.createElement('input')
-  const isCoolInput = document.createElement('input')
-  const select = document.createElement('select')
-  const button = document.createElement('button')
-
-  usernameLabel.textContent = 'Username'
-  isCoolLabel.textContent = "Is this user cool?"
-  languageLabel.textContent = "Favorite Language"
-
-  usernameLabel.for = 'username'
-  
-  usernameInput.id = 'username'
-  usernameInput.name = 'username'
-  isCoolInput.id = 'is-cool'
-  isCoolInput.name = "isCool"
-  isCoolInput.type = 'checkbox'
-
-  select.id = 'favorite-language'
-  select.name = "favoriteLanguage"
-
-  const options = ['None', 'JavaScript', 'Python', 'Ruby'];
-
-  options.forEach(optionText => {
-    const optionEl = document.createElement('option');
-    optionEl.value = optionText;
-    optionEl.textContent = optionText;
-    select.appendChild(optionEl);
-  })
-
-  button.textContent = "Create User"
-
-  newUserFormEl.append(usernameLabel,usernameInput,isCoolLabel,isCoolInput,languageLabel,select,button)
+  newUserFormEl.innerHTML = `
+  <label for="username">Username</label>
+  <input id="username" name="username" type="text"></input>
+  <label for="is-cool">Is this user cool?</label>
+  <input id="is-cool" name="isCool" type="checkbox"></input>
+  <label for="favorite-language">Favorite Language</label>
+  <select id="favorite-language" name="favoriteLanguage">
+      <option value="None">None</option>
+      <option value="JavaScript">JavaScript</option>
+      <option value="Python">Python</option>
+      <option value="Ruby">Ruby</option>
+  </select>
+  <button>Create User</button>`
 }
 
 export const renderNewUser = (newUserEl, newUser) => {
