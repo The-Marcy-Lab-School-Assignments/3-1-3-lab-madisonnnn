@@ -30,11 +30,43 @@ export default async function app(appDiv) {
   // renderNewUserForm;
 
   // Fetch the books!
-  // const books =
+    const books = await getFirstThreeFantasyBooks()
+    console.log(books)
   // render out the books
-  // renderBookList
+    renderBookList(bookListEl, books) //populates container with data
 
-  // bookListEl.addEventListener('???', () => {})
+   bookListEl.addEventListener('click', async (event) => {
+    if (event.target.tagName === 'BUTTON') {
+      console.log(event)
+      const authorId = event.target.dataset.authorUrlKey;
+  
+      console.log("this is author id", authorId);
+      if (authorId) {
+        // Fetch author data
+        const authorData = await getAuthor(authorId);
+        console.log("this is author data: ", authorData)
+        // Render author data
+        if (authorData) {
+         await renderAuthorInfo(authorInfoEl, authorData);
+        }
 
-  // newUserFormEl.addEventListener('???', () => {})
+   }}})
+
+   newUserFormEl.addEventListener('submit', async (event) => {
+    event.preventDefault()
+    if (event.target.tagName === 'BUTTON') {
+      console.log(event)
+      const newUser = event.target.dataset;
+  
+      console.log("this is newUser", newUser);
+      if (newUser) {
+        // Fetch author data
+        const userData = await renderNewUser(newUser);
+        console.log("this is user data: ", userData)
+        // Render author data
+        if (userData) {
+         await renderNewUserForm(renderNewUser, userData);
+        }
+
+   }}})
 }
